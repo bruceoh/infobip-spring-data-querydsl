@@ -4,7 +4,7 @@
 
 	<groupId>com.infobip</groupId>
 	<artifactId>infobip-spring-data-querydsl</artifactId>
-	<version>9.2.1-SNAPSHOT</version>
+	<version>10.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Infobip Spring Data Querydsl</name>
@@ -67,7 +67,9 @@
 	<properties>
 		<!-- DEPENDENCY VERSIONS -->
 		<spring-boot.version>3.5.0</spring-boot.version>
-		<querydsl.version>5.1.0</querydsl.version>
+        <!-- Use the OpenFeign-maintained Querydsl fork -->
+        <querydsl.groupId>io.github.openfeign.querydsl</querydsl.groupId>
+        <querydsl.version>7.0</querydsl.version>
 
 		<infobip-testcontainers.version>4.4.4</infobip-testcontainers.version>
 
@@ -151,6 +153,33 @@
 			<version>${infobip-testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+<!--        &lt;!&ndash; OpenFeign Querydsl 7.0 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign.querydsl</groupId>-->
+<!--            <artifactId>querydsl-core</artifactId>-->
+<!--            <version>${querydsl.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign.querydsl</groupId>-->
+<!--            <artifactId>querydsl-apt</artifactId>-->
+<!--            <version>${querydsl.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign.querydsl</groupId>-->
+<!--            <artifactId>querydsl-jpa</artifactId>-->
+<!--            <version>${querydsl.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign.querydsl</groupId>-->
+<!--            <artifactId>querydsl-sql</artifactId>-->
+<!--            <version>${querydsl.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign.querydsl</groupId>-->
+<!--            <artifactId>querydsl-sql-codegen</artifactId>-->
+<!--            <version>${querydsl.version}</version>-->
+<!--        </dependency>-->
 	</dependencies>
 
 	<build>
@@ -177,30 +206,29 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<artifactId>kotlin-maven-plugin</artifactId>
-				<configuration>
-					<jvmTarget>1.8</jvmTarget>
-				</configuration>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<version>${kotlin.version}</version>
-
-				<executions>
-					<execution>
-						<id>test-compile</id>
-						<goals>
-							<goal>test-compile</goal>
-						</goals>
-						<configuration>
-							<sourceDirs>
-								<sourceDir>${project.basedir}/src/test/java</sourceDir>
-								<sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-							</sourceDirs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                    <jvmTarget>17</jvmTarget>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>

@@ -20,6 +20,7 @@ import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.OrderSpecifier.NullHandling;
 import com.querydsl.core.types.dsl.Expressions;
+import com.querydsl.sql.RelationalPath;
 import com.querydsl.sql.SQLQuery;
 import com.querydsl.sql.SQLQueryFactory;
 import org.springframework.data.domain.Pageable;
@@ -47,12 +48,14 @@ public class Querydsl {
 		return sqlQueryFactory.query();
 	}
 
-	public SQLQuery<?> createQuery(EntityPath<?>... paths) {
-
-		Assert.notNull(paths, "Paths must not be null!");
-
-		return createQuery().from(paths);
-	}
+    public SQLQuery<?> createQuery(RelationalPath<?>... paths) {
+        org.springframework.util.Assert.notNull(paths, "Paths must not be null!");
+        SQLQuery<?> q = createQuery(); // returns SQLQuery<?> from your factory
+        for (RelationalPath<?> p : paths) {
+            q.from(p);
+        }
+        return q;
+    }
 
 	public <T> SQLQuery<T> applyPagination(Pageable pageable, SQLQuery<T> query) {
 

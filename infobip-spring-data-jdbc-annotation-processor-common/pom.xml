@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.infobip</groupId>
         <artifactId>infobip-spring-data-querydsl</artifactId>
-        <version>9.2.1-SNAPSHOT</version>
+        <version>10.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>infobip-spring-data-jdbc-annotation-processor-common</artifactId>
@@ -22,8 +22,9 @@
             <version>${auto-service.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
+            <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.eclipse.jdt</groupId>
@@ -32,8 +33,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
+            <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-codegen</artifactId>
+            <version>${querydsl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
