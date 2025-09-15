@@ -5,6 +5,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.ElementFilter;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -35,9 +36,11 @@ public abstract class SpringDataJdbcAnnotationProcessorBase extends AbstractQuer
 
     public SpringDataJdbcAnnotationProcessorBase(Class<? extends NamingStrategy> namingStrategyClass) {
         try {
-            this.namingStrategy = namingStrategyClass.newInstance();
+            this.namingStrategy = namingStrategyClass.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new IllegalArgumentException("Failed to create new instance of " + namingStrategyClass, e);
+        } catch (InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
         this.typeElementHandlerFactory = new DefaultTypeElementHandlerFactory();
     }
