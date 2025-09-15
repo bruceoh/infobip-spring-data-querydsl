@@ -1,8 +1,6 @@
 package com.infobip.spring.data.jdbc.annotation.processor;
 
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.ElementFilter;
 import java.io.IOException;
@@ -21,6 +19,8 @@ import com.querydsl.sql.ColumnMetadata;
 import com.querydsl.sql.codegen.MetaDataSerializer;
 import com.querydsl.sql.codegen.NamingStrategy;
 import com.querydsl.sql.codegen.SQLCodegenModule;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.springframework.data.relational.core.mapping.Column;
 
 public class CustomMetaDataSerializer extends MetaDataSerializer {

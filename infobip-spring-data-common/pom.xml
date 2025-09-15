@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.infobip</groupId>
         <artifactId>infobip-spring-data-querydsl</artifactId>
-        <version>9.2.1-SNAPSHOT</version>
+        <version>10.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>infobip-spring-data-common</artifactId>
@@ -26,12 +26,14 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
+            <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql</artifactId>
+            <version>${querydsl.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
+            <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-spring</artifactId>
+            <version>${querydsl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
