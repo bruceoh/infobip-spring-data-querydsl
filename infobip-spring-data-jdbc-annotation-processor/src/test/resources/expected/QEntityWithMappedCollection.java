@@ -30,7 +30,7 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QEntityWithMappedCollection(String variable) {
-        super(EntityWithMappedCollection.class, forVariable(variable), "dbo", "EntityWithMappedCollection");
+        super(EntityWithMappedCollection.class, forVariable(variable), null, "EntityWithMappedCollection");
         addMetadata();
     }
 
@@ -45,12 +45,12 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     }
 
     public QEntityWithMappedCollection(Path<? extends EntityWithMappedCollection> path) {
-        super(path.getType(), path.getMetadata(), "dbo", "EntityWithMappedCollection");
+        super(path.getType(), path.getMetadata(), null, "EntityWithMappedCollection");
         addMetadata();
     }
 
     public QEntityWithMappedCollection(PathMetadata metadata) {
-        super(EntityWithMappedCollection.class, metadata, "dbo", "EntityWithMappedCollection");
+        super(EntityWithMappedCollection.class, metadata, null, "EntityWithMappedCollection");
         addMetadata();
     }
 
@@ -59,4 +59,3 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     }
 
 }
-
