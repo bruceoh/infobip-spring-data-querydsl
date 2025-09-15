@@ -4,8 +4,10 @@ import static com.querydsl.core.types.PathMetadataFactory.*;
 
 import com.querydsl.core.types.dsl.*;
 
+import com.querydsl.core.types.dsl.StringTemplate;
+
 import com.querydsl.core.types.PathMetadata;
-import javax.annotation.processing.Generated;
+import com.querydsl.core.annotations.Generated;
 import com.querydsl.core.types.Path;
 
 import com.querydsl.sql.ColumnMetadata;
@@ -17,6 +19,7 @@ import java.sql.Types;
 /**
  * QEntityWithMappedCollection is a Querydsl query type for EntityWithMappedCollection
  */
+@SuppressWarnings("this-escape")
 @Generated("com.infobip.spring.data.jdbc.annotation.processor.CustomMetaDataSerializer")
 public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPathBase<EntityWithMappedCollection> {
 
@@ -27,7 +30,7 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QEntityWithMappedCollection(String variable) {
-        super(EntityWithMappedCollection.class, forVariable(variable), null, "EntityWithMappedCollection");
+        super(EntityWithMappedCollection.class, forVariable(variable), "dbo", "EntityWithMappedCollection");
         addMetadata();
     }
 
@@ -42,12 +45,12 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     }
 
     public QEntityWithMappedCollection(Path<? extends EntityWithMappedCollection> path) {
-        super(path.getType(), path.getMetadata(), null, "EntityWithMappedCollection");
+        super(path.getType(), path.getMetadata(), "dbo", "EntityWithMappedCollection");
         addMetadata();
     }
 
     public QEntityWithMappedCollection(PathMetadata metadata) {
-        super(EntityWithMappedCollection.class, metadata, null, "EntityWithMappedCollection");
+        super(EntityWithMappedCollection.class, metadata, "dbo", "EntityWithMappedCollection");
         addMetadata();
     }
 
@@ -56,3 +59,4 @@ public class QEntityWithMappedCollection extends com.querydsl.sql.RelationalPath
     }
 
 }
+

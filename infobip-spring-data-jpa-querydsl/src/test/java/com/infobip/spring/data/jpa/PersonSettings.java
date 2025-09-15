@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 class PersonSettings {
 
